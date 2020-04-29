@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="text-center">
+        <h1>*ngIf</h1>
+      </div>
+      <hr />
+      <div class="card text-white bg-dark mb-3" *ngIf="show">
+        <div class="card-body">
+          <h5 class="card-title">{{ sentence.author }}</h5>
+          <p class="card-text">{{ sentence.message }}</p>
+        </div>
+      </div>
+      <button class="btn btn-outline-dark btn-block" (click)="handleClic()">
+        {{ buttonName }}
+      </button>
+    </div>
+    <div class="col">
+      <div class="text-center">
+        <h1>*ngFor</h1>
+      </div>
+      <hr />
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let avenger of avengers; let i = index"
+        >
+          {{ i + 1 }} - {{ avenger }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
