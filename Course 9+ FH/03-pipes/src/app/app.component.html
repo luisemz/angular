@@ -1,0 +1,191 @@
+<h1 class="mt-3">Pipes <small>(Angunlar)</small></h1>
+<hr />
+<div class="row">
+  <div class="col">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Variable</th>
+          <th>Pipe</th>
+          <th>Salida</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ name }}</td>
+          <td>uppercase</td>
+          <td>{{ name | uppercase }}</td>
+        </tr>
+        <tr>
+          <td>{{ name }}</td>
+          <td>lowercase</td>
+          <td>{{ name | lowercase }}</td>
+        </tr>
+        <tr>
+          <td>{{ name2 }}</td>
+          <td>camelcase</td>
+          <td>{{ name2 | camelcase }}</td>
+        </tr>
+        <tr>
+          <td>{{ name }}</td>
+          <td>slice:3</td>
+          <td>{{ name | slice: 3 }}</td>
+        </tr>
+        <tr>
+          <td>{{ name }}</td>
+          <td>slice:0:3</td>
+          <td>{{ name | slice: 0:3 }}</td>
+        </tr>
+        <tr>
+          <td>{{ numbers }}</td>
+          <td>slice:1:5</td>
+          <td>{{ numbers | slice: 1:5 }}</td>
+        </tr>
+        <tr>
+          <td>{{ pi }}</td>
+          <td>number</td>
+          <td>{{ pi | number }}</td>
+        </tr>
+        <tr>
+          <td>{{ pi }}</td>
+          <td>number:"3.0-0"</td>
+          <td>{{ pi | number: "3.0-0" }}</td>
+        </tr>
+        <tr>
+          <td>{{ pi }}</td>
+          <td>number:"3.0-2"</td>
+          <td>{{ pi | number: "3.0-2" }}</td>
+        </tr>
+        <tr>
+          <td>{{ pi }}</td>
+          <td>number:".0-2"</td>
+          <td>{{ pi | number: ".0-2" }}</td>
+        </tr>
+        <tr>
+          <td>{{ percentage }}</td>
+          <td>percent</td>
+          <td>{{ percentage | percent }}</td>
+        </tr>
+        <tr>
+          <td>{{ percentage }}</td>
+          <td>percent:"2.2-2"</td>
+          <td>{{ percentage | percent: "2.2-2" }}</td>
+        </tr>
+        <tr>
+          <td>{{ salary }}</td>
+          <td>currency</td>
+          <td>{{ salary | currency }}</td>
+        </tr>
+        <tr>
+          <td>{{ salary }}</td>
+          <td>currency:"EUR"</td>
+          <td>{{ salary | currency: "EUR" }}</td>
+        </tr>
+        <tr>
+          <td>{{ salary }}</td>
+          <td>currency:"CAD":"symbol-narrow":".0-0"</td>
+          <td>{{ salary | currency: "CAD":"symbol-narrow":".0-0" }}</td>
+        </tr>
+        <tr>
+          <td>{{ promise }}</td>
+          <td>async</td>
+          <td>{{ promise | async }}</td>
+        </tr>
+        <tr>
+          <td>{{ date }}</td>
+          <td>date</td>
+          <td>{{ date | date }}</td>
+        </tr>
+        <tr>
+          <td>{{ date }}</td>
+          <td>date:"medium"</td>
+          <td>{{ date | date: "medium" }}</td>
+        </tr>
+        <tr>
+          <td>{{ date }}</td>
+          <td>date:"short"</td>
+          <td>{{ date | date: "short" }}</td>
+        </tr>
+        <tr>
+          <td>{{ date }}</td>
+          <td>date:"MMMM - dd"</td>
+          <td>{{ date | date: "MMMM - dd" }}</td>
+        </tr>
+        <tr>
+          <td>{{ date }}</td>
+          <td>
+            date:"MMMM - dd":"":"{{ language }}"
+            <br />
+            <button
+              class="btn btn-outline-dark btn-block"
+              (click)="language = 'es'"
+            >
+              Es
+            </button>
+            <button
+              class="btn btn-outline-dark btn-block"
+              (click)="language = 'en'"
+            >
+              En
+            </button>
+            <button
+              class="btn btn-outline-dark btn-block"
+              (click)="language = 'fr'"
+            >
+              Fr
+            </button>
+          </td>
+          <td>{{ date | date: "MMMM - dd":"":language }}</td>
+        </tr>
+        <tr>
+          <td>{{ name }}</td>
+          <td>
+            password:{{ showPass }}
+            <br />
+            <button
+              class="btn btn-outline-dark btn-block"
+              (click)="showPassword()"
+            >
+              {{ buttonName }}
+            </button>
+          </td>
+          <td>{{ name | showpass: showPass }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<hr />
+
+<h4>Slice</h4>
+<hr />
+<ul>
+  <li *ngFor="let number of numbers | slice: 5:20">{{ number }}</li>
+</ul>
+<hr />
+
+<h4>Json</h4>
+<hr />
+<div class="row">
+  <div class="col">
+    <pre>
+      {{ heroe | json }}
+    </pre>
+  </div>
+</div>
+<hr />
+
+<h4>DOM Seguro</h4>
+<hr />
+<div class="row">
+  <div class="col">
+    <iframe
+      width="560"
+      height="315"
+      [src]="videoUrl | safedom"
+      frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+</div>
