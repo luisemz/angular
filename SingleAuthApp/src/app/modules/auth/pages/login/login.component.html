@@ -1,0 +1,88 @@
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100 m-b-20 p-t-30 p-b-50 p-l-20 p-r-20">
+      <form
+        class="login100-form validate-form flex-sb flex-w"
+        [formGroup]="form"
+        (ngSubmit)="save()"
+      >
+        <span class="login100-form-title p-b-25">
+          Login
+        </span>
+
+        <div
+          class="wrap-input100 m-b-16"
+          [class.is-invalid]="validateFieldInvalid('username')"
+          [DataValidate]="'Username is required'"
+        >
+          <input
+            type="text"
+            class="input100"
+            placeholder="Username"
+            formControlName="username"
+          />
+
+          <span class="focus-input100"></span>
+        </div>
+
+        <div
+          class="wrap-input100 m-b-16"
+          (mouseover)="showRequiresPass = true"
+          (mouseleave)="showRequiresPass = false"
+          [class.is-invalid]="validateFieldInvalid('password')"
+          [DataValidate]="'Password is required'"
+        >
+          <input
+            type="password"
+            class="input100"
+            placeholder="Password"
+            formControlName="password"
+          />
+          <span class="focus-input100"></span>
+
+          <app-pass-requires
+            *ngIf="validateFieldInvalid('password')"
+            [control]="getControl('password')"
+            [show]="showRequiresPass"
+          ></app-pass-requires>
+        </div>
+
+        <div class="flex-sb-m w-full p-t-3 p-b-20">
+          <div class="contact100-form-checkbox">
+            <input
+              id="ckb1"
+              type="checkbox"
+              class="input-checkbox100"
+              formControlName="remember"
+            />
+            <label class="label-checkbox100" for="ckb1">
+              Remember Me
+            </label>
+          </div>
+
+          <div>
+            <a [routerLink]="['/auth/register']" class="txt1">
+              ¿Don't you have account?
+            </a>
+          </div>
+        </div>
+
+        <div class="container-login100-form-btn m-t-10">
+          <button
+            type="submit"
+            class="login100-form-btn"
+            [disabled]="disabledByInvalidField('password')"
+          >
+            Sign in
+          </button>
+        </div>
+
+        <div class="m-t-8 w-full text-center">
+          <a [routerLink]="['/auth/restart']" class="txt1">
+            ¿Forget account? / Restart
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

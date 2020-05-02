@@ -1,0 +1,71 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" [routerLink]="['']">
+    <img
+      src="assets/img/banner-logo.png"
+      width="30"
+      height="30"
+      class="d-inline-block align-top"
+      alt="Logo Banner"
+    />
+    SingleAuthApp
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        *ngIf="authServices.isAuthneticated()"
+      >
+        <a class="nav-link" [routerLink]="['/content/home']">Home</a>
+      </li>
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        *ngIf="authServices.isAuthneticated()"
+      >
+        <a class="nav-link" [routerLink]="['/content/users']">Users</a>
+      </li>
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        *ngIf="authServices.isAuthneticated()"
+      >
+        <a class="nav-link" [routerLink]="['/content/connects']">Connects</a>
+      </li>
+    </ul>
+    <div
+      class="nav-item dropdown"
+      *ngIf="authServices.isAuthneticated()"
+      (click)="getUsername()"
+    >
+      <i
+        class="fa fa-2x fa-user-circle text-light pointer"
+        aria-hidden="true"
+        id="navbarDropdownMenuLink"
+        role="button"
+        data-toggle="dropdown"
+      ></i>
+      <div
+        class="dropdown-menu dropdown-menu-right text-center"
+        aria-labelledby="navbarDropdownMenuLink"
+      >
+        <span class="dropdown-item text-muted disabled">{{ username }}</span>
+        <div class="dropdown-divider"></div>
+        <span class="dropdown-item text-danger pointer" (click)="logout()"
+          >Sign out</span
+        >
+      </div>
+    </div>
+  </div>
+</nav>

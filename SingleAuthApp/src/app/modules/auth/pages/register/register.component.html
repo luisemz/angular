@@ -1,0 +1,117 @@
+<div class="limiter m-t-50">
+  <div class="container-login100">
+    <div class="wrap-login100 m-b-20 p-t-30 p-b-50 p-l-20 p-r-20">
+      <form
+        class="login100-form validate-form flex-sb flex-w"
+        [formGroup]="form"
+        (ngSubmit)="save()"
+      >
+        <span class="login100-form-title p-b-25">
+          Register
+        </span>
+
+        <div
+          class="wrap-input100 m-b-14"
+          [class.is-invalid]="validateFieldInvalid('email')"
+          [class.is-valid]="validateFieldValid('email')"
+          [DataValidate]="'Email is required'"
+        >
+          <input
+            type="email"
+            class="input100"
+            placeholder="Email"
+            formControlName="email"
+          />
+
+          <span class="focus-input100"></span>
+        </div>
+
+        <div
+          class="wrap-input100 m-b-14"
+          [class.is-invalid]="validateFieldInvalid('username')"
+          [class.is-valid]="validateFieldValid('username')"
+          [class.is-pending]="validateFieldPending('username')"
+          [DataValidate]="usernameMessage"
+        >
+          <input
+            type="text"
+            class="input100"
+            placeholder="Username"
+            formControlName="username"
+          />
+          <span class="focus-input100"></span>
+        </div>
+
+        <!-- <span class="text-danger">Password is required, It should has min 8 characters</span> -->
+        <div
+          class="wrap-input100 m-b-14"
+          (mouseover)="showRequiresPassFn(true)"
+          (mouseleave)="showRequiresPassFn(false)"
+          [class.is-invalid]="validateFieldInvalid('password')"
+          [class.is-valid]="validateFieldValid('password')"
+          [DataValidate]="'Password is required'"
+        >
+          <input
+            type="password"
+            class="input100"
+            placeholder="Password"
+            formControlName="password"
+          />
+          <span class="focus-input100"></span>
+
+          <app-pass-requires
+            *ngIf="validateFieldInvalid('password')"
+            [control]="getControl('password')"
+            [show]="showRequiresPass"
+          ></app-pass-requires>
+        </div>
+
+        <div
+          class="wrap-input100 m-b-14"
+          (mouseover)="showRequiresVerifyPassFn(true)"
+          (mouseleave)="showRequiresVerifyPassFn(false)"
+          [class.is-invalid]="validateFieldInvalid('verifyPassword')"
+          [class.is-valid]="validateFieldValid('verifyPassword')"
+          [DataValidate]="'Password do not match'"
+        >
+          <input
+            type="password"
+            class="input100"
+            placeholder="Verify Password"
+            formControlName="verifyPassword"
+            [disabled]="
+              disabledField('verifyPassword', !validateFieldValid('password'))
+            "
+          />
+          <span class="focus-input100"></span>
+
+          <app-pass-requires
+            *ngIf="validateFieldInvalid('verifyPassword')"
+            [control]="getControl('verifyPassword')"
+            [show]="showRequiresVerifyPass"
+          ></app-pass-requires>
+        </div>
+
+        <div class="flex-sb-m w-full p-t-3 p-b-20">
+          <div></div>
+
+          <div class="m-b-8">
+            <a [routerLink]="['/auth/login']" class="txt1">
+              ¿Do you have account? / Sign In
+            </a>
+          </div>
+        </div>
+
+        <div class="container-login100-form-btn m-t-10">
+          <button
+            class="login100-form-btn"
+            type="submit"
+            [disabled]="form.invalid"
+          >
+            Sign up
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

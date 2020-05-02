@@ -1,0 +1,15 @@
+<ul class="nav nav-tabs nav-justified">
+  <li class="nav-item" routerLinkActive="active">
+    <a data-toggle="tab" class="nav-link" [routerLink]="['/content/users/list']"
+      >User List</a
+    >
+  </li>
+  <li class="nav-item" routerLinkActive="active">
+    <a data-toggle="tab" class="nav-link" [routerLink]="['/content/users/user']"
+      >User</a
+    >
+  </li>
+</ul>
+<div class="m-t-20">
+  <router-outlet></router-outlet>
+</div>
