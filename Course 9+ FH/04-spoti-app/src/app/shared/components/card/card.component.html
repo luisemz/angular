@@ -1,0 +1,29 @@
+<div class="card-columns mt-2">
+  <div class="card animated fadeIn" *ngFor="let item of items">
+    <img
+      height="350"
+      class="card-img-top pointer"
+      [src]="item.images | noimage"
+      [alt]="item.name"
+      (click)="showItem(item)"
+    />
+    <div class="card-body">
+      <h5 class="card-title pointer" (click)="showItem(item)">
+        {{ item.name }}
+        <small *ngIf="item.release_date"
+          >({{ item.release_date | date: "dd MMM, y" }})</small
+        >
+      </h5>
+      <p class="card-text">{{ item.artists ? "Artists" : "Genres" }}:</p>
+      <span
+        class="badge badge-dark pointer"
+        *ngFor="let artist of item.artists"
+        (click)="showItem(artist)"
+        >{{ artist.name }}</span
+      >
+      <span class="badge badge-dark" *ngFor="let genre of item.genres">{{
+        genre
+      }}</span>
+    </div>
+  </div>
+</div>

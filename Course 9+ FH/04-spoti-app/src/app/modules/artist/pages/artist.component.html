@@ -1,0 +1,112 @@
+<app-loading *ngIf="loadingArtist"></app-loading>
+<app-show-error [message]="errorMessage" *ngIf="error"></app-show-error>
+<div class="row mt-3 animated fadeIn" *ngIf="!loadingArtist">
+  <div class="col-3">
+    <img
+      [src]="artist.images | noimage"
+      [alt]="artist.name"
+      class="img-thumbnail img-circle"
+    />
+  </div>
+  <div class="col">
+    <h3>{{ artist.name }} <small>(Artist)</small></h3>
+    <p>
+      Genres:
+      <span class="badge badge-light" *ngFor="let genre of artist.genres">{{
+        genre
+      }}</span>
+    </p>
+    <small>Followers: {{ artist.followers.total | number }}</small> <br />
+    <small>Popularity: {{ artist.popularity / 100 | percent: ".0-0" }}</small>
+    <p>
+      <a
+        [href]="artist.external_urls.spotify"
+        target="_blank"
+        class="text-success"
+        >Go to Spotify Page</a
+      >
+    </p>
+  </div>
+  <div class="col-3 text-right">
+    <button routerLink="/content/home" class="btn btn-outline-success">
+      Return
+    </button>
+  </div>
+</div>
+
+<app-loading *ngIf="!loadingArtist && loadingTracks"></app-loading>
+<div *ngIf="!loadingArtist && !loadingTracks">
+  <div class="row mt-5">
+    <div class="col">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search country"
+          aria-label="Search country"
+          aria-describedby="button-addon2"
+          [(ngModel)]="search"
+          (keyup.enter)="searchCountry($event)"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-light"
+            type="button"
+            id="button-addon2"
+            (click)="searchCountry($event)"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr class="table-light">
+            <th class="text-center">Picture</th>
+            <th>Album</th>
+            <th>Track</th>
+            <th class="text-center">Preview</th>
+          </tr>
+        </thead>
+        <tbody class="text-light">
+          <tr *ngFor="let track of artistTopTracks">
+            <td class="text-center">
+              <img
+                class="img-thumb"
+                [src]="track.album.images | noimage"
+                [alt]="track.name + track.album.name"
+              />
+            </td>
+            <td
+              class="pointer"
+              [routerLink]="['/content/album', track.album.id]"
+            >
+              {{ track.album.name }}
+            </td>
+            <td class="pointer" [routerLink]="['/content/track', track.id]">
+              {{ track.name }}
+            </td>
+            <td class="text-center">
+              <iframe
+                [src]="track.uri | safedom"
+                width="300"
+                height="80"
+                frameborder="0"
+                allowtransparency="true"
+                allow="encrypted-media"
+              ></iframe>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <app-show-info
+    [message]="'Tracks not found'"
+    *ngIf="!artistTopTracks.length && !loadingTracks && !error"
+  ></app-show-info>
+</div>

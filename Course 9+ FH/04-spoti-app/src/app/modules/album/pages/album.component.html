@@ -1,0 +1,82 @@
+<app-loading *ngIf="loading"></app-loading>
+<app-show-error [message]="errorMessage" *ngIf="error"></app-show-error>
+<div class="row mt-3 animated fadeIn" *ngIf="!loading">
+  <div class="col-3">
+    <img
+      [src]="album.images | noimage"
+      [alt]="album.name"
+      class="img-thumbnail img-circle"
+    />
+  </div>
+  <div class="col">
+    <h3>{{ album.name }} <small>(Album)</small></h3>
+    <p>{{ album.label }}</p>
+    <p>
+      Artists:
+      <span
+        class="badge badge-light pointer"
+        [routerLink]="['/content/artist', artist.id]"
+        *ngFor="let artist of album.artists"
+        >{{ artist.name }}</span
+      >
+    </p>
+    <p *ngIf="album.genres.lenght > 0">
+      Genres:
+      <span class="badge badge-light" *ngFor="let genre of album.genres">{{
+        genre
+      }}</span>
+    </p>
+    <small>Popularity: {{ album.popularity / 100 | percent: ".0-0" }}</small>
+    <p>
+      <a
+        [href]="album.external_urls.spotify"
+        target="_blank"
+        class="text-success"
+        >Go to Spotify Page</a
+      >
+    </p>
+  </div>
+  <div class="col-3 text-right">
+    <button routerLink="/content/home" class="btn btn-outline-success">
+      Return
+    </button>
+  </div>
+</div>
+
+<div class="row mt-5" *ngIf="!loading">
+  <div class="col">
+    <table class="table">
+      <thead>
+        <tr class="table-light">
+          <th class="text-center">Picture</th>
+          <th>Track</th>
+          <th class="text-center">Preview</th>
+        </tr>
+      </thead>
+      <tbody class="text-light">
+        <tr *ngFor="let track of album.tracks">
+          <td class="text-center">
+            <img
+              class="img-thumb"
+              [src]="album.images | noimage"
+              [alt]="track.name + ' ' + album.name"
+            />
+          </td>
+          <td class="pointer" [routerLink]="['/content/track', track.id]">
+            {{ track.name }}
+          </td>
+          <td class="text-center">
+            <iframe
+              [src]="track.uri | safedom"
+              width="300"
+              height="80"
+              frameborder="0"
+              allowtransparency="true"
+              allow="encrypted-media"
+            ></iframe>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

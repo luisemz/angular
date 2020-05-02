@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-md-10">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search track or artist"
+        aria-label="Search track or artist"
+        aria-describedby="button-addon2"
+        [(ngModel)]="search"
+        (keyup.enter)="searchTrackOrArtist($event)"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-light"
+          type="button"
+          id="button-addon2"
+          (click)="searchTrackOrArtist($event)"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <select
+      class="form-control"
+      name="searchType"
+      [(ngModel)]="searchType"
+      (change)="searchTrackOrArtist($event)"
+    >
+      <option [ngValue]="'track'">Track</option>
+      <option [ngValue]="'artist'">Artist</option>
+    </select>
+  </div>
+</div>
+
+<app-loading *ngIf="loading"></app-loading>
+<app-show-error [message]="errorMessage" *ngIf="error"></app-show-error>
+<div *ngIf="searchResult.length">
+  <hr />
+  <h1>{{ searchType | uppercase }}s</h1>
+  <app-card [items]="searchResult"></app-card>
+</div>
+<app-show-info
+  [message]="'Data not found'"
+  *ngIf="notFound && !loading && !error"
+></app-show-info>
