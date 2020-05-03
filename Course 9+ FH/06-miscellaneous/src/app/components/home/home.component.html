@@ -1,0 +1,29 @@
+<div class="container">
+  <app-ng-style></app-ng-style>
+  <hr />
+
+  <app-css></app-css>
+  <p [ngClass]="{ 'text-primary': changeColor }">
+    Hello World from Home Component
+  </p>
+  <button
+    class="btn"
+    [ngClass]="{
+      'btn-outline-primary': !changeColor,
+      'btn-outline-dark': changeColor
+    }"
+    (click)="changeColor = !changeColor"
+  >
+    {{ changeColor ? "Default" : "Primary" }}
+  </button>
+  <hr />
+
+  <app-class></app-class>
+  <hr />
+
+  <p [appHighlighted]="'orange'">Hello World from Home Component</p>
+  <hr />
+
+  <app-ng-switch></app-ng-switch>
+  <hr />
+</div>

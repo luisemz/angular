@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-4 text-center">
+    <h3>
+      User <small>({{ id }})</small>
+    </h3>
+  </div>
+  <div class="col-8 text-center">
+    <div class="btn-group btn-group-md" role="group" aria-label="Basic example">
+      <button
+        type="button"
+        class="btn btn-outline-dark"
+        [routerLink]="['new']"
+        routerLinkActive="active"
+      >
+        New
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-dark"
+        [routerLink]="['edit']"
+        routerLinkActive="active"
+      >
+        Edit
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-dark"
+        [routerLink]="['detail']"
+        routerLinkActive="active"
+      >
+        Detail
+      </button>
+    </div>
+  </div>
+</div>
+<hr />
+<div class="row">
+  <router-outlet></router-outlet>
+</div>

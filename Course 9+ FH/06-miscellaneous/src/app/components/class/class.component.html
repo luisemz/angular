@@ -1,0 +1,76 @@
+<div class="alert" role="alert" [ngClass]="className">
+  A simple {{ className }} alert—check it out!
+</div>
+<div class="row">
+  <div class="col-2">
+    <button
+      class="btn btn-outline-primary btn-block"
+      (click)="changeClass('alert-primary')"
+    >
+      Primary
+    </button>
+  </div>
+  <div class="col-2">
+    <button
+      class="btn btn-outline-secondary btn-block"
+      (click)="changeClass('alert-secondary')"
+    >
+      Secondary
+    </button>
+  </div>
+  <div class="col-2">
+    <button
+      class="btn btn-outline-success btn-block"
+      (click)="changeClass('alert-success')"
+    >
+      Success
+    </button>
+  </div>
+  <div class="col-2">
+    <button
+      class="btn btn-outline-danger btn-block"
+      (click)="changeClass('alert-danger')"
+    >
+      Danger
+    </button>
+  </div>
+  <div class="col-2">
+    <button
+      class="btn btn-outline-warning btn-block"
+      (click)="changeClass('alert-warning')"
+    >
+      Warning
+    </button>
+  </div>
+  <div class="col-2">
+    <button
+      class="btn btn-outline-info btn-block"
+      (click)="changeClass('alert-info')"
+    >
+      Info
+    </button>
+  </div>
+</div>
+<br />
+<h3
+  [ngClass]="{
+    'text-danger': className === 'alert-danger',
+    'text-success': className === 'alert-success'
+  }"
+>
+  Hello World from Class Component
+</h3>
+<br />
+<h3>Async Process</h3>
+<button
+  class="btn btn-outline-primary"
+  (click)="process()"
+  [disabled]="loading"
+>
+  <i
+    class="fa"
+    [ngClass]="{ 'fa-save': !loading, 'fa-sync fa-spin': loading }"
+    aria-hidden="true"
+  ></i>
+  {{ loading ? "Saving..." : "Save Changes" }}
+</button>

@@ -7,3 +7,4 @@ Couser make from Udemy to learn Angular
 3. [Angular and Custom Pipes](https://github.com/luisemz/angular/tree/master/Course%209%2B%20FH/03-pipes)
 4. [SpotiApp, web app that uses Spotify API](https://github.com/luisemz/angular/tree/master/Course%209%2B%20FH/04-spoti-app)
 5. [ToDo, wish list app made with Ionic](https://github.com/luisemz/angular/tree/master/Course%209%2B%20FH/05-todo)
+5. [Miscellaneous](https://github.com/luisemz/angular/tree/master/Course%209%2B%20FH/06-miscellaneous)

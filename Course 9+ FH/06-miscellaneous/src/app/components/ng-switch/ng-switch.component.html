@@ -1,0 +1,73 @@
+<div [ngSwitch]="alert">
+  <div *ngSwitchCase="'primary'" class="alert alert-primary" role="alert">
+    A simple primary alert—check it out!
+  </div>
+  <div *ngSwitchCase="'secondary'" class="alert alert-secondary" role="alert">
+    A simple secondary alert—check it out!
+  </div>
+  <div *ngSwitchCase="'success'" class="alert alert-success" role="alert">
+    A simple success alert—check it out!
+  </div>
+  <div *ngSwitchCase="'danger'" class="alert alert-danger" role="alert">
+    A simple danger alert—check it out!
+  </div>
+  <div *ngSwitchCase="'warning'" class="alert alert-warning" role="alert">
+    A simple warning alert—check it out!
+  </div>
+  <div *ngSwitchCase="'info'" class="alert alert-info" role="alert">
+    A simple info alert—check it out!
+  </div>
+  <div *ngSwitchCase="'light'" class="alert alert-light" role="alert">
+    A simple light alert—check it out!
+  </div>
+  <div *ngSwitchCase="'dark'" class="alert alert-dark" role="alert">
+    A simple dark alert—check it out!
+  </div>
+  <div *ngSwitchDefault class="alert alert-primary" role="alert">
+    A simple primary alert—check it out!
+  </div>
+</div>
+<div class="row">
+  <div class="col-2">
+    <button
+      class="btn btn-outline-primary btn-block"
+      (click)="alert = 'primary'"
+    >
+      Primary
+    </button>
+  </div>
+  <div class="col-2">
+    <button
+      class="btn btn-outline-secondary btn-block"
+      (click)="alert = 'secondary'"
+    >
+      Secondary
+    </button>
+  </div>
+  <div class="col-2">
+    <button
+      class="btn btn-outline-success btn-block"
+      (click)="alert = 'success'"
+    >
+      Success
+    </button>
+  </div>
+  <div class="col-2">
+    <button class="btn btn-outline-danger btn-block" (click)="alert = 'danger'">
+      Danger
+    </button>
+  </div>
+  <div class="col-2">
+    <button
+      class="btn btn-outline-warning btn-block"
+      (click)="alert = 'warning'"
+    >
+      Warning
+    </button>
+  </div>
+  <div class="col-2">
+    <button class="btn btn-outline-info btn-block" (click)="alert = 'info'">
+      Info
+    </button>
+  </div>
+</div>
