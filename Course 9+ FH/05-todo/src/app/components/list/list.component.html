@@ -1,0 +1,22 @@
+<ion-list>
+  <ion-item-sliding
+    *ngFor="let item of list | finishFilter: (tab === 2 ? true : false)"
+  >
+    <ion-item-options side="start">
+      <ion-item-option (click)="updateList(item)">
+        <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+
+    <ion-item (click)="selectList(item)" detail>
+      <ion-label>{{ item.title }}</ion-label>
+      <ion-badge slot="end">{{ item.items.length }} items</ion-badge>
+    </ion-item>
+
+    <ion-item-options side="end">
+      <ion-item-option (click)="deleteList(item)" color="danger">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
