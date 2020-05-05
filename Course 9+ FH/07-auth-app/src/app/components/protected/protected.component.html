@@ -1,0 +1,20 @@
+<div class="row justify-content-md-center">
+  <div class="col-4">
+    <div class="card text-center" *ngIf="profile">
+      <h1>Profile</h1>
+      <img
+        [src]="profile.picture | noimage"
+        [alt]="profile.name"
+        style="width:100%"
+      />
+      <br />
+      <h3>
+        <b>{{ profile.name }}</b>
+      </h3>
+      <span class="text-muted">{{ profile.email }}</span>
+      <span class="text-muted">Full Stack Web Developer</span>
+      <br />
+      <p>Auth0 - A9</p>
+    </div>
+  </div>
+</div>
