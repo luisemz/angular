@@ -9,3 +9,4 @@ Couser make from Udemy to learn Angular
 5. [ToDo, wish list app made with Ionic](https://github.com/luisemz/angular/tree/master/Course%209%2B%20FH/05-todo)
 6. [Miscellaneous](https://github.com/luisemz/angular/tree/master/Course%209%2B%20FH/06-miscellaneous)
 7. [AuthApp, uses Auth0 authenticate](https://github.com/luisemz/angular/tree/master/Course%209%2B%20FH/07-auth-app)
+8. [LoginAppBonus, uses local stratagy authenticate](https://github.com/luisemz/angular/tree/master/Course%209%2B%20FH/08-login-app-bonus)
