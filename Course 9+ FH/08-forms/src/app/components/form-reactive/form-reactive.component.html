@@ -1,0 +1,306 @@
+<h4>Forms <small> Reactive </small></h4>
+<hr />
+<form autocomplete="off" [formGroup]="form" (ngSubmit)="save()">
+  <div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Nombre"
+          formControlName="nombre"
+          [class.is-invalid]="validateFieldInvalid('nombre')"
+        />
+        <small
+          class="form-text text-danger"
+          *ngIf="validateFieldInvalid('nombre')"
+        >
+          Nombre requerido, almenos 4 letras
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Apellido</label>
+      <div class="col-8">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Apellido"
+          formControlName="apellido"
+          [class.is-invalid]="validateFieldInvalid('apellido')"
+        />
+        <small
+          class="form-text text-danger"
+          *ngIf="validateFieldInvalid('apellido')"
+        >
+          Apellido requerido, almenos 4 letras
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Correo</label>
+    <div class="col-8">
+      <input
+        type="email"
+        class="form-control"
+        placeholder="Correo electrónico"
+        formControlName="correo"
+        [class.is-invalid]="validateFieldInvalid('correo')"
+        [class.is-valid]="validateFieldValid('correo')"
+      />
+      <small
+        class="form-text text-danger"
+        *ngIf="validateFieldInvalid('correo')"
+      >
+        Correo invalido
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Usuario</label>
+    <div class="col-8">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Usuario"
+        formControlName="usuario"
+        [class.is-invalid]="
+          validateFieldInvalid('usuario') || usuarioNoValid('usuario')
+        "
+      />
+      <small
+        class="form-text text-danger"
+        *ngIf="validateFieldInvalid('usuario')"
+      >
+        Usuario requerido
+      </small>
+      <small class="form-text text-danger" *ngIf="usuarioNoValid('usuario')">
+        Usuario no válido
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Contraseña</label>
+    <div class="col-8">
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Contraseña"
+        formControlName="contrasena"
+        (mouseover)="showRequiresPassFn(true)"
+        (mouseleave)="showRequiresPassFn(false)"
+        [class.is-invalid]="validateFieldInvalid('contrasena')"
+        [class.is-valid]="validateFieldValid('contrasena')"
+      />
+      <small
+        class="form-text text-danger"
+        *ngIf="validateFieldInvalid('contrasena')"
+      >
+        Contraseña requerida
+      </small>
+      <app-password-requires
+        *ngIf="validateFieldInvalid('contrasena')"
+        [control]="getControl('contrasena')"
+        [show]="showRequiresPass"
+      ></app-password-requires>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Verificar contraseña</label>
+    <div class="col-8">
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Verificar contraseña"
+        formControlName="verificarContrasena"
+        (mouseover)="showRequiresVerifyPassFn(true)"
+        (mouseleave)="showRequiresVerifyPassFn(false)"
+        [disabled]="
+          disabledField(
+            'verificarContrasena',
+            !validateFieldValid('contrasena')
+          )
+        "
+        [class.is-invalid]="
+          validateFieldInvalid('verificarContrasena') ||
+          validateFieldVerifyPassword('contrasena', 'verificarContrasena')
+        "
+        [class.is-valid]="
+          validateFieldValid('contrasena') &&
+          validateFieldValid('verificarContrasena') &&
+          !validateFieldVerifyPassword('contrasena', 'verificarContrasena')
+        "
+      />
+      <small
+        class="form-text text-danger"
+        *ngIf="validateFieldVerifyPassword('contrasena', 'verificarContrasena')"
+      >
+        Las contraseñas no coinciden
+      </small>
+      <app-password-requires
+        *ngIf="validateFieldInvalid('verificarContrasena')"
+        [control]="getControl('verificarContrasena')"
+        [show]="showRequiresVerifyPass"
+      ></app-password-requires>
+    </div>
+  </div>
+
+  <div class="form-group row" formGroupName="direccion">
+    <label class="col-2 col-form-label">Dirección</label>
+    <div class="col-8">
+      <div class="row">
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Dirección"
+            formControlName="direccion"
+            [class.is-invalid]="validateFieldInvalid('direccion.direccion')"
+          />
+          <small
+            class="form-text text-danger"
+            *ngIf="validateFieldInvalid('direccion.direccion')"
+          >
+            Dirección requerida
+          </small>
+        </div>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Ciudad"
+            formControlName="ciudad"
+            [class.is-invalid]="validateFieldInvalid('direccion.ciudad')"
+          />
+          <small
+            class="form-text text-danger"
+            *ngIf="validateFieldInvalid('direccion.ciudad')"
+          >
+            Ciudad requerida
+          </small>
+        </div>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Casa"
+            formControlName="casa"
+            [class.is-invalid]="validateFieldInvalid('direccion.casa')"
+          />
+          <small
+            class="form-text text-danger"
+            *ngIf="validateFieldInvalid('direccion.casa')"
+          >
+            Casa requerida
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">País</label>
+    <div class="col-8">
+      <select
+        class="form-control"
+        name="pais"
+        formControlName="pais"
+        [disabled]="disabledField('pais', !paises)"
+        [class.is-invalid]="validateFieldInvalid('pais')"
+      >
+        <option *ngFor="let pais of paises" [value]="pais.alpha3Code">{{
+          pais.name
+        }}</option></select
+      >
+      <small class="form-text text-danger" *ngIf="validateFieldInvalid('pais')">
+        País requerido
+      </small>
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-2 col-form-label">Pasatiempos</label>
+    <div class="col-8">
+      <table class="table" *ngIf="getControls('pasatiempos').controls.length">
+        <thead class="thead thead-dark text-center">
+          <tr>
+            <th>Pasatiempos</th>
+            <th>Borrar</th>
+          </tr>
+        </thead>
+        <tbody formArrayName="pasatiempos" class="tbody tbody-light">
+          <tr
+            *ngFor="
+              let control of getControls('pasatiempos').controls;
+              let i = index
+            "
+          >
+            <td>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Pasatiempo - {{ i + 1 }}"
+                [formControlName]="i"
+                [class.is-invalid]="validateArrayFieldInvalid('pasatiempos', i)"
+              />
+              <small
+                class="form-text text-danger"
+                *ngIf="validateArrayFieldInvalid('pasatiempos', i)"
+              >
+                Pasatiempo requerido
+              </small>
+            </td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-outline-danger btn-block"
+                (click)="removeControl('pasatiempos', i)"
+              >
+                Borrar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="row justify-content-center mb-5">
+        <div class="col-4">
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-block"
+            (click)="addControl('pasatiempos')"
+          >
+            Agregar +
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <button type="submit" class="btn btn-outline-primary btn-block">
+        Guardar
+      </button>
+    </div>
+  </div>
+</form>
+
+<hr />
+<pre>
+  Estado del formulario: {{ form.valid }}
+  <br>
+  Status: {{ form.status }}
+</pre>
+
+<pre>
+  {{ form.value | json }}
+</pre>

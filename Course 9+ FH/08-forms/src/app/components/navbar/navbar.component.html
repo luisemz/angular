@@ -1,0 +1,49 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" [routerLink]="['/home']">
+    <img
+      src="assets/images/logo-form.png"
+      width="30"
+      height="30"
+      class="d-inline-block align-top"
+      alt="Login Image"
+    />
+    Forms
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/formtemplate']">Form Template</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/formreactive']">Form Reactive</a>
+      </li>
+    </ul>
+    <div
+      class="nav-item dropdown pointer"
+      id="navbarDropdownMenuLink"
+      role="button"
+      data-toggle="dropdown"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </div>
+    <div
+      class="dropdown-menu dropdown-menu-right text-center"
+      aria-labelledby="navbarDropdownMenuLink"
+    >
+      <span class="dropdown-item text-muted disabled">Form App</span>
+      <div class="dropdown-divider"></div>
+      <span class="dropdown-item text-danger disabled">Log out</span>
+    </div>
+  </div>
+</nav>
