@@ -1,0 +1,85 @@
+<div class="row">
+  <div class="col-md-10 col-sm-12">
+    <h1>Heroes List</h1>
+  </div>
+  <div class="col-md-2 col-sm-12">
+    <button
+      class="btn btn-block btn-outline-primary"
+      [routerLink]="['/heroe', 'new']"
+    >
+      <i class="fa fa-plus" aria-hidden="true"></i> Add
+    </button>
+  </div>
+</div>
+
+<hr />
+
+<div class="row mt-5 animated fadeIn fast" *ngIf="!loading && heroes.length">
+  <div class="col-md-12 col-sm-12">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Power</th>
+          <th scope="col" class="text-center">Live</th>
+          <th scope="col" class="text-center">Tools</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let heroe of heroes; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ heroe.name }}</td>
+          <td>{{ heroe.power }}</td>
+          <td class="text-center">
+            <label class="badge badge-success" *ngIf="heroe.life">Life</label>
+            <label class="badge badge-danger" *ngIf="!heroe.life">Dead</label>
+          </td>
+          <td class="text-center">
+            <div class="row">
+              <div class="col-sm-6">
+                <button
+                  class="btn btn-block btn-primary"
+                  [routerLink]="['/heroe', heroe.id]"
+                >
+                  <i class="fa fa-pen"></i>
+                </button>
+              </div>
+              <div class="col-sm-6">
+                <button
+                  class="btn btn-block btn-danger"
+                  (click)="deleteHeroe(heroe, i)"
+                >
+                  <i class="fa fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row animated fadeIn fast" *ngIf="!loading && !heroes.length">
+  <div class="col-sm-12">
+    <div class="alert alert-warning text-center mt-3">
+      <h4 class="alert-heading">Not found data</h4>
+      <p class="mb-0">
+        <i class="fa fa-2x fa-exclamation"></i>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="row animated fadeIn fast" *ngIf="loading">
+  <div class="col-sm-12">
+    <div class="alert alert-info text-center mt-3">
+      <h4 class="alert-heading">Loading</h4>
+      <p>
+        <i class="fa fa-2x fa-sync-alt fa-spin"></i>
+      </p>
+      <p class="mb-0">Wait please</p>
+    </div>
+  </div>
+</div>

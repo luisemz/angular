@@ -11,3 +11,4 @@ Couser make from Udemy to learn Angular
 7. [AuthApp, uses Auth0 authenticate](https://github.com/luisemz/angular/tree/master/Course%209%2B%20FH/07-auth-app)
 8. [LoginAppBonus, uses local stratagy authenticate](https://github.com/luisemz/angular/tree/master/Course%209%2B%20FH/07-login-app-bonus)
 9. [Forms](https://github.com/luisemz/angular/tree/master/Course%209%2B%20FH/08-forms)
+10. [HeroesApp - Firebase CRUD](https://github.com/luisemz/angular/tree/master/Course%209%2B%20FH/09-heroes-app)
