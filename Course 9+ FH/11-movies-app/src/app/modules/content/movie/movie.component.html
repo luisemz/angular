@@ -1,0 +1,54 @@
+<div *ngIf="movie">
+  <div class="row">
+    <div class="col-sm-4">
+      <img
+        src="{{ movie | noimage }}"
+        class="img-fluid"
+        alt="Responsive image"
+        height="0px"
+      />
+    </div>
+    <div class="col-sm-6">
+      <h1>
+        {{ movie.title }}
+        <small class="text-muted">({{ movie.original_title }})</small>
+      </h1>
+      <ul>
+        <li>Popularidad: {{ movie.popularity | number: ".0-2" }}</li>
+        <li>Ingresos: {{ movie.revenue | currency: "US":"US-$ ":".0-2" }}</li>
+        <li>Fecha Lanzamiento: {{ movie.release_date | date }}</li>
+        <li>
+          <p class="mb-0">Compañias de producción:</p>
+          <span
+            class="badge badge-dark mr-2"
+            *ngFor="let companies of movie.production_companies"
+            >{{ companies.name }}</span
+          >
+        </li>
+        <li>
+          <p class="mt-3 mb-0">Paises producción:</p>
+          <span
+            class="badge badge-dark mr-2"
+            *ngFor="let countries of movie.production_countries"
+            >{{ countries.name }}</span
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-2">
+      <button
+        class="btn btn-outline-danger btn-block"
+        role="button"
+        (click)="goBack()"
+      >
+        Regresar
+      </button>
+    </div>
+  </div>
+  <br />
+  <div class="row text-justify">
+    <div class="col-sm-12">
+      <p>{{ movie.overview }}</p>
+    </div>
+  </div>
+</div>

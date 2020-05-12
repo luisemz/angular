@@ -1,0 +1,47 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" [routerLink]="['']">
+    <img
+      src="assets/images/movie-app.png"
+      width="30"
+      height="30"
+      class="d-inline-block align-top"
+      alt=""
+    />
+    MoviesApp
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/content/home']">Inicio</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/content/search', '']">Buscar</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" (submit)="searchByWord()">
+      <input
+        type="search"
+        name="word"
+        class="form-control mr-sm-2"
+        placeholder="Buscar..."
+        aria-label="Buscar"
+        [(ngModel)]="word"
+        (keyup.enter)="searchByWord()"
+      />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Buscar
+      </button>
+    </form>
+  </div>
+</nav>

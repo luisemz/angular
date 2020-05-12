@@ -1,0 +1,21 @@
+<div class="col mb-4 animated fadeInUp">
+  <div class="card h-100 pointer" (click)="viewMovie()">
+    <img
+      src="{{ movie | noimage }}"
+      height="450px"
+      class="card-img-top"
+      alt="{{ movie.original_title }}"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ movie.title }}</h5>
+      <p class="card-text text-justify">
+        {{ movie.overview | slice: 0:150 }}...
+      </p>
+      <p class="card-text">
+        <small class="text-muted"
+          >Publish : {{ movie.release_date | date }}</small
+        >
+      </p>
+    </div>
+  </div>
+</div>

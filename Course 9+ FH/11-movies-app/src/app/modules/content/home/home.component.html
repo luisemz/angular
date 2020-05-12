@@ -1,0 +1,31 @@
+<ul class="nav nav-tabs nav-justified">
+  <li class="nav-item">
+    <a
+      data-toggle="tab"
+      class="nav-link"
+      routerLinkActive="active"
+      [routerLink]="['/content/home/theatres']"
+      >En Cartelera</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      data-toggle="tab"
+      class="nav-link"
+      routerLinkActive="active"
+      [routerLink]="['/content/home/tops']"
+      >Populares</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      data-toggle="tab"
+      class="nav-link"
+      routerLinkActive="active"
+      [routerLink]="['/content/home/topsKids']"
+      >Populares Niños</a
+    >
+  </li>
+</ul>
+<br />
+<router-outlet></router-outlet>
