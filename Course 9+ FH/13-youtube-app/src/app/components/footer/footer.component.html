@@ -1,0 +1,12 @@
+<footer class="footer text-center">
+  <div class="container">
+    <span class="text-muted">LEMZ ©</span>
+    <button
+      *ngIf="scrolled"
+      class="btn btn-outline-danger float-right btn-footer"
+      (click)="scrollTop()"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
+  </div>
+</footer>
