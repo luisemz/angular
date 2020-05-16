@@ -14,3 +14,4 @@ Couser make from Udemy to learn Angular
 10. [HeroesApp - Firebase CRUD](https://github.com/luisemz/angular/tree/master/Course%209%2B%20FH/09-heroes-app)
 11. [FireChap - Firebase RealTime](https://github.com/luisemz/angular/tree/master/Course%209%2B%20FH/10-fire-chap)
 12. [MoviesApp - The MDB (API)](https://github.com/luisemz/angular/tree/master/Course%209%2B%20FH/11-movies-app)
+13. [Maps](https://github.com/luisemz/angular/tree/master/Course%209%2B%20FH/12-maps)

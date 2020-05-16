@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-card-title>Maps</mat-card-title>
+  <mat-card-content>
+    <google-map
+      height="600px"
+      width="100%"
+      [center]="center"
+      [zoom]="zoom"
+      (mapClick)="addMarker($event)"
+      (mapMousemove)="move($event)"
+    >
+      <map-marker
+        #mkr
+        *ngFor="let marker of markers"
+        [position]="{ lat: marker.lat, lng: marker.lng }"
+        [options]="markerOptions"
+        (mapClick)="openInfoWindow(mkr, marker)"
+      ></map-marker>
+      <map-info-window>
+        <strong>{{ markerInfo.title }}</strong>
+        <p>
+          {{ markerInfo.description }}
+        </p>
+        <p style="margin-bottom: 0;">
+          Latitude: {{ markerInfo.lat | number: ".0-2" }}
+        </p>
+        <p>Longitude: {{ markerInfo.lng | number: ".0-2" }}</p>
+        <div class="button-container">
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="removeMarker(markerInfo)"
+          >
+            Remove
+          </button>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="editMarker(markerInfo)"
+          >
+            Edit
+          </button>
+        </div>
+      </map-info-window>
+    </google-map>
+    <br />
+    <div>Latitude: {{ display?.lat }}</div>
+    <div>Longitude: {{ display?.lng }}</div>
+  </mat-card-content>
+</mat-card>
