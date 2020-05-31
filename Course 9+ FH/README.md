@@ -18,3 +18,4 @@ Couser make from Udemy to learn Angular
 14. [Youtube API V3](https://github.com/luisemz/angular/tree/master/Course%209%2B%20FH/13-youtube-app)
 15. [FileUpload (Firebase - FireStore)](https://github.com/luisemz/angular/tree/master/Course%209%2B%20FH/14-file-upload)
 16. [Graphics](https://github.com/luisemz/angular/tree/master/Course%209%2B%20FH/15-graphics)
+17. [VirtualScroll and Drag-Drop](https://github.com/luisemz/angular/tree/master/Course%209%2B%20FH/16-virtual-scroll)
