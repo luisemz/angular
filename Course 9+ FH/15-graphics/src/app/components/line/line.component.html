@@ -1,0 +1,77 @@
+<h3>Line Chart</h3>
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div style="display: block;">
+      <canvas
+        baseChart
+        width="200"
+        height="100"
+        [datasets]="lineChartData"
+        [labels]="lineChartLabels"
+        [options]="lineChartOptions"
+        [colors]="lineChartColors"
+        [legend]="lineChartLegend"
+        [chartType]="lineChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"
+      ></canvas>
+    </div>
+  </div>
+  <div class="col-md-8 text-center">
+    <table class="table table-responsive table-condensed">
+      <tr>
+        <th *ngFor="let label of lineChartLabels">{{ label }}</th>
+      </tr>
+      <tr *ngFor="let d of lineChartData; let i = index" [class]="'line-' + i">
+        <td *ngFor="let label of lineChartLabels; let j = index">
+          {{ d && d.data[j] }}
+        </td>
+      </tr>
+    </table>
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      (click)="randomize()"
+      class="btn btn-primary ml-1 mr-1"
+    >
+      Randomize
+    </button>
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      (click)="pushOne()"
+      class="btn btn-primary ml-1 mr-1"
+    >
+      Push
+    </button>
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      (click)="changeColor()"
+      class="btn btn-primary ml-1 mr-1"
+    >
+      Recolor
+    </button>
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      (click)="hideOne()"
+      class="btn btn-primary ml-1 mr-1"
+    >
+      Toggle Series B
+    </button>
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      (click)="changeLabel()"
+      class="btn btn-primary ml-1 mr-1"
+    >
+      Change Label
+    </button>
+  </div>
+</div>
