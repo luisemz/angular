@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.app-container {
+  margin: 60px 0;
+}
+
+.chat-input {
+  margin-top: 10px;
+}
+
+#chat-messages {
+  height: 300px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  overflow-y: scroll;
+}
