@@ -1,0 +1,12 @@
+<div class="animate__animated animate__fadeIn">
+  <h1 class="mt-5">
+    Search Movies: <small class="text-capitalize">{{ query }}</small>
+  </h1>
+
+  <hr />
+
+  <app-movies-poster-grid
+    [movies]="movies"
+    *ngIf="movies.length > 0"
+  ></app-movies-poster-grid>
+</div>

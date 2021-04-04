@@ -1,0 +1,16 @@
+<div class="animate__animated animate__fadeIn">
+  <h1>Billboard</h1>
+
+  <div class="row" *ngIf="movies.length > 0">
+    <div class="col">
+      <app-slideshow [movies]="moviesSlideshow"></app-slideshow>
+    </div>
+  </div>
+
+  <h1 class="mt-5">Movies</h1>
+
+  <app-movies-poster-grid
+    [movies]="movies"
+    *ngIf="movies.length > 0"
+  ></app-movies-poster-grid>
+</div>

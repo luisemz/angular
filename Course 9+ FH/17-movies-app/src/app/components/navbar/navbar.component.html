@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/home">Movies</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+      <div class="d-flex">
+        <input
+          #searchInput
+          type="search"
+          (keyup.enter)="searchMovie(searchInput.value)"
+          class="form-control me-2"
+          placeholder="Search Movie"
+          aria-label="Search Movie"
+        />
+        <button
+          type="submit"
+          class="btn btn-outline-success"
+          (click)="searchMovie(searchInput.value)"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
